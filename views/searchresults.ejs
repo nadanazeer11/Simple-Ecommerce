@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            background-image: url("background3.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            -webkit-text-stroke: 1px blue;
+        }
+        
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card1 button,.card2 button,.card3 button,.card4 button,.card5 button,.card6 button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card1 button:hover,.card2 button:hover,.card3 button:hover,.card4 button:hover,.card5 button:hover,.card6 button:hover {
+  opacity: 0.7;
+}
+* {
+        box-sizing: border-box;
+      }
+.all{
+    display : inline;
+    text-align: center;
+}
+.card1,.card2,.card3,.card4,.card5,.card6{
+    border: 1px solid;
+    padding: 20px 30px;
+    float: left;
+    margin-right: 3px;
+    margin-left: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 270px;
+    max-height: 800px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    font-size: medium;
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+        <a class="navbar-brand" style="color: rgb(191, 255, 161)">Search Results</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <form method="POST" action='/search' class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" name="Search" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <% if(typeof alert != 'undefined') { %>
+            
+        <div class="alert alert-danger" role="alert">
+            <strong>Oups!</strong> Item not found.
+          </div>
+       
+    <% } %>
+ <!-- Product #1 -->
+ <div class="all">
+    <%if (msg1==1){%>
+    <div class="card1">
+        
+        <img src="galaxy.jpg" style="width:100%">
+        <h1> Galaxy S21 Ultra </h1>
+        <p class="price">$549</p>
+        <p>
+        <button onclick="location.href = '/galaxy';">
+            Go to Galaxy S21 Ultra
+        </button>
+        </p>
+      </div>
+      <%}%>
+ <!-- Product #2 -->
+ <%if (msg2==1){%>
+ <div class="card2">
+        
+    <img src="iphone.jpg" style="width:100%">
+    <h1>Iphone 13 Pro</h1>
+    <p class="price">$700</p>
+    <p>
+    <button onclick="location.href = '/iphone';">
+        Go to Iphone 13 Pro 
+    </button>
+    </p>
+  </div>
+  <%}%>
+ <!-- Product #3 -->
+ <%if (msg3==1){%>
+ <div class="card3">
+        
+    <img src="leaves.jpg" style="width:100%">
+    <h1>Leaves of Grass</h1>
+    <p class="price">$50</p>
+    <p>
+    <button onclick="location.href ='/leaves';">
+        Go to Leaves of Grass 
+    </button>
+    </p>
+  </div>
+  <%}%>
+ <!-- Product #4 -->
+ <%if (msg4==1){%>
+ <div class="card4">
+        
+    <img src="sun.jpg"  style="width:100%">
+    <h1>The Sun and Her Flowers</h1>
+    <p class="price">$70</p>
+    <p>
+    <button onclick="location.href = '/sun';">
+        Go to The Sun and Her Flowers 
+    </button>
+    </p>
+  </div>
+  <%}%>
+ <!-- Product #5 -->
+ <%if (msg5==1){%>
+ <div class="card5">
+        
+    <img src="boxing.jpg" style="width:100%">
+    <h1>Boxing Bag</h1>
+    <p class="price">$90</p>
+    <p>
+    <button  onclick="location.href = '/boxing';">
+        Go to Boxing Bag 
+    </button>
+    </p>
+  </div>
+  <%}%>
+ <!-- Product #6 -->
+ <%if (msg6==1){%>
+ <div class="card6">
+        
+    <img src="tennis.jpg" style="width:100%">
+    <h1>Tennis Racket</h1>
+    <p class="price">$120</p>
+    <p>
+    <button  onclick="location.href = '/tennis';">
+        Go to Tennis Racket
+    </button>
+    </p>
+  </div>
+  <%}%>
+</div>
+</body>
+</html>

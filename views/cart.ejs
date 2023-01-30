@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        background-image: url("background3.jpg");
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+
+      h1 {
+        color: white;
+        text-align: center;
+        -webkit-text-stroke: 1px blue;
+      }
+      * {
+        box-sizing: border-box;
+      }
+
+      .shopping-cart {
+        width: 750px;
+        height: 800px;
+        margin: 80px auto;
+        background: #ffffff;
+        box-shadow: 1px 2px 3px 0px rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        margin-top: 1px;
+        display: flex;
+        flex-direction: column;
+      }
+      .title {
+        height: 60px;
+        border-bottom: 1px solid #e1e8ee;
+        padding: 20px 30px;
+        color: #5e6977;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      .item {
+        padding: 20px 30px;
+        height: 120px;
+        display: flex;
+      }
+
+      .item:nth-child(6) {
+        border-top: 1px solid #e1e8ee;
+        border-bottom: 1px solid #e1e8ee;
+      }
+      .buttons {
+        position: relative;
+        padding-top: 30px;
+        margin-right: 60px;
+      }
+      .delete-btn {
+        display: inline-block;
+        cursor: pointer;
+      }
+      .delete-btn {
+        width: 18px;
+        height: 17px;
+        color: #11111f;
+        background: url("delete-icn.svg") no-repeat center;
+      }
+
+      .image {
+        margin-right: 50px;
+      }
+
+      .description {
+        padding-top: 10px;
+        margin-right: 60px;
+        width: 115px;
+      }
+
+      .description span {
+        display: block;
+        font-size: 14px;
+        color: #43484d;
+        font-weight: 400;
+      }
+
+      .description span:first-child {
+        margin-bottom: 5px;
+      }
+      
+      .quantity {
+        padding-top: 20px;
+        margin-right: 60px;
+      }
+      .quantity p {
+        -webkit-appearance: none;
+        border: none;
+        text-align: center;
+        width: 32px;
+        font-size: 16px;
+        color: #43484d;
+        font-weight: 300;
+      }
+
+      button[class*="btn"] {
+        width: 30px;
+        height: 30px;
+        background-color: #ffffff;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+      }
+      
+      button:focus,
+      input:focus {
+        outline: 0;
+      }
+      .total-price {
+        width: 83px;
+        padding-top: 27px;
+        text-align: center;
+        font-size: 16px;
+        color: #43484d;
+        font-weight: 300;
+      }
+      @media (max-width: 800px) {
+        .shopping-cart {
+          width: 100%;
+          height: auto;
+          overflow: hidden;
+        }
+        .item {
+          height: auto;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .image img {
+          width: 50%;
+        }
+        .image,
+        .quantity,
+        .description {
+          width: 100%;
+          text-align: center;
+          margin: 6px 0;
+        }
+        .buttons {
+          margin-right: 20px;
+        }
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body onload = "javascript:pageloadEvery(1000)">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-2">
+      <a class="navbar-brand" style="color: rgb(191, 255, 161)">Cart</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" style="left: 10px"></ul>
+        <form method="POST" action="/search" class="form-inline my-2 my-lg-0" >
+          <input
+            class="form-control mr-sm-2"
+            name="Search"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <script>
+      function reload(){
+      setTimeout('location.reload(true);',500);
+      }
+    </script>
+    <div class="shopping-cart">
+      <!-- Title -->
+      <div class="title">Shopping Bag</div>
+     
+      <% if (msg1!=0) { %>
+      <!-- Product #1 -->
+      <div class="item">
+        <div class="buttons">
+          <form action="/action_galaxy" method="post">
+            <button type="submit" class="delete-btn" onclick="reload()"  ></button>
+          </form>
+        </div>
+        <div class="image">
+          <img src="galaxy.jpg" alt="" height="100" width="100" />
+        </div>
+
+        <div class="description">
+          <span>Galaxy S21 Ultra</span>
+        </div>       
+        <div class="quantity" id="quan">
+          <p> <%= msg1 %> </p>
+        </div>
+        <div class="total-price">$549</div>
+      </div>
+      <% } %>
+      <% if (msg2!=0) { %>
+       <!-- Product #2 -->
+       <div class="item">
+        <div class="buttons">
+          <form action="/action_iphone" method="post">
+            <button type="submit" class="delete-btn"  onclick="reload()" ></button>
+          </form>
+        </div>
+
+        <div class="image">
+          <img src="iphone.jpg" alt="" height="100" width="100" />
+        </div>
+
+        <div class="description">
+          <span>iphone 13 pro</span>
+        </div>
+
+        <div class="quantity">
+          <p> <%= msg2 %> </p>
+        </div>
+
+        <div class="total-price">$700</div>
+      </div>
+      <% } %>
+      <% if (msg3!=0) { %>
+       <!-- Product #3 -->
+       <div class="item">
+        <div class="buttons">
+          <form action="/action_leaves" method="post">
+            <button type="submit" class="delete-btn"  onclick="reload()" ></button>
+          </form>
+        </div>
+
+        <div class="image">
+          <img src="leaves.jpg" alt="" height="100" width="100" />
+        </div>
+
+        <div class="description">
+          <span>Leaves of Grass</span>
+        </div>
+
+        <div class="quantity">
+          <p> <%= msg3 %> </p>
+        </div>
+
+        <div class="total-price">$50</div>
+      </div>
+      <% } %>
+      <% if (msg4!=0) { %>
+       <!-- Product #4 -->
+       <div class="item">
+        <div class="buttons">
+          <form action="/action_sun" method="post">
+            <button type="submit" class="delete-btn" onclick="reload()" ></button>
+          </form>
+        </div>
+
+        <div class="image">
+          <img src="sun.jpg" alt="" height="100" width="100" />
+        </div>
+
+        <div class="description">
+          <span>The Sun and Her Flowers</span>
+        </div>
+
+        <div class="quantity">
+          <p> <%= msg4 %> </p>
+        </div>
+
+        <div class="total-price">$70</div>
+      </div>
+      <% } %>
+      <% if (msg5!=0) { %>
+       <!-- Product #5 -->
+       <div class="item">
+        <div class="buttons">
+          <form action="/action_tennis" method="post">
+            <button type="submit" class="delete-btn"  onclick="reload()" ></button>
+          </form>
+        </div>
+
+        <div class="image">
+          <img src="tennis.jpg" alt="" height="100" width="100" />
+        </div>
+
+        <div class="description">
+          <span>Tennis Racket</span>
+        </div>
+
+        <div class="quantity">
+          <p> <%= msg5 %> </p>
+        </div>
+
+        <div class="total-price">$120</div>
+      </div>
+      <% } %>
+      <% if (msg6!=0) { %>
+       <!-- Product #6 -->
+       <div class="item">
+        <div class="buttons">
+          <form action="/action_box" method="post">
+            <button type="submit" class="delete-btn"  onclick="reload()"  ></button>
+          </form>
+        </div>
+
+        <div class="image">
+          <img src="boxing.jpg" alt="" height="100" width="100" />
+        </div>
+
+        <div class="description">
+          <span>Boxing Bag</span>
+        </div>
+
+        <div class="quantity">
+          <p> <%= msg6 %></p>
+        </div>
+
+        <div class="total-price">$90</div>
+      </div>
+      <% } %>
+      
+    </div>
+  </body>
+</html>
+<!-- <script>
+  function pageloadEvery(t)
+  {
+    setTimeout('location.reload(true)',t);
+  }
+</script> -->
